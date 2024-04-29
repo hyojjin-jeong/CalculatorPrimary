@@ -14,8 +14,8 @@ public class App {
         int r = 0;
         char operate = ' ';
         char two = ' ';
-        ArithmeticCalculator ariCal = new ArithmeticCalculator();
-        CircleCalculator cirCal = new CircleCalculator();
+        ArithmeticCalculator ariCal = new ArithmeticCalculator(new AddOperator(), new SubtractOperator(), new MultiplyOperator(), new DivideOperator());
+        CircleCalculator cirCal = new CircleCalculator(new AddOperator(), new SubtractOperator(), new MultiplyOperator(), new DivideOperator());
 
         while (true) {
             // 사칙연산, 원의 넗이 중 고르는 입력 받기
