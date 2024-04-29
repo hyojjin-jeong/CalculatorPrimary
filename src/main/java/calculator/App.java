@@ -10,6 +10,8 @@ public class App {
         int firstNum = 0;
         int secondNum = 0;
         char operate = ' ';
+        int[] answers = new int[10];
+        int cnt = 0;
         while (true) {
             try {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -54,12 +56,15 @@ public class App {
                 result = firstNum / secondNum;
             }
             System.out.println("결과: " + result);
+            answers[cnt] = result; // 연산 결과를 배열에 저장
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             /* exit을 입력 받으면 반복 종료 */
             String answer = sc.next();
             if (answer.equals("exit")) {
                 break;
+            } else {
+                cnt++; // 값이 저장될 때마다 다음 배열 칸으로 이동
             }
         }
     }
