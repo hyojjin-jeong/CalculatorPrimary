@@ -1,5 +1,33 @@
 package main.java.calculator;
 
-public class Calculator {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Calculator {
+    /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
+    List<Integer> answers = new ArrayList<>();
+
+    public int calculate(int firstNum, int secondNum, char operate) throws BadException{ // 예외 알려주기
+        /* 위 요구사항에 맞게 구현 */
+        /* return 연산 결과 */
+        int result = 0;
+        if (operate == '+') {
+            result = firstNum + secondNum;
+        } else if (operate == '-') {
+            result = firstNum - secondNum;
+        } else if (operate == '*') {
+            result = firstNum * secondNum;
+        } else if (operate == '/') {
+            if (secondNum == 0) { // 나눗셈 연산에서 분모가 0이라면, 예외를 던지기
+                throw new BadException();
+            }
+            result = firstNum / secondNum;
+        } else { // 지정하지 않은 연산기호가 들어오면, 예외 던지기
+            throw new BadException();
+        }
+
+        answers.add(result);
+
+        return result;
+    }
 }
