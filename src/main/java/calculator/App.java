@@ -54,18 +54,25 @@ public class App {
             }
 
             Calculator cal = new Calculator();
-            cal.calculate(firstNum, secondNum, operate); // 연산
+            int result = cal.calculate(firstNum, secondNum, operate); // 연산
+            List<Integer> re = cal.getAnswers(); // 현재 리스트 값 받아오기
+            re.add(result); // 현재 연산한 결과값 리스트에 추가하기
+            cal.setAnswers(re); // 변경한 리스트 클래스 필드에 넣기
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String remove = sc.next();
             if (remove.equals("remove")) { // remove 를 입력 시
-                cal.answers.remove(0); // 가장 먼저 저장된 연산 결과 삭제
+                List<Integer> ans = cal.getAnswers(); // 현재 리스트 받아오기
+                ans.remove(0); // 가장 먼저 저장된 연산 결과 삭제
+                cal.setAnswers(ans); // 변경된 리스트 클래스 필드에 넣기
             }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inquiry = sc.next();
             if (inquiry.equals("inquiry")) { // inquiry 입력 시
-                cal.liprint();
+                List<Integer> ans = cal.getAnswers(); // 현재 리스트 받아오기
+                ans.forEach(n -> System.out.print(n + " ")); // 리스트 출력
+                System.out.println();
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
