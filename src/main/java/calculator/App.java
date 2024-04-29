@@ -1,6 +1,8 @@
 package main.java.calculator;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -10,8 +12,7 @@ public class App {
         int firstNum = 0;
         int secondNum = 0;
         char operate = ' ';
-        int[] answers = new int[10];
-        int cnt = 0;
+        List<Integer> answers = new ArrayList<>();
         while (true) {
             try {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -56,17 +57,16 @@ public class App {
                 result = firstNum / secondNum;
             }
             System.out.println("결과: " + result);
-            if (cnt == 10) { // 연산 결과가 10개를 초과하는 경우
-                for (int i = 0; i < 9; i++) { // 가장 먼저 저장된 결과를 삭제
-                    answers[i] = answers[i+1];
-                }
-                cnt = 9;
-            }
-            answers[cnt] = result; // 연산 결과를 배열에 저장
-            cnt++; // 값이 저장될 때마다 다음 배열 칸으로 이동
+            answers.add(result); // 연산 결과를 배열에 저장
 
-            for (int i = 0; i < answers.length; i++) {
-                System.out.print(answers[i] + " ");
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String remove = sc.next();
+            if (remove.equals("remove")) { // remove를 입력 시
+                answers.remove(0); // 가장 먼저 저장된 연산 결과 삭제
+            }
+
+            for (int i = 0; i < answers.size(); i++) {
+                System.out.print(answers.get(i) + " ");
             }
             System.out.println();
 
