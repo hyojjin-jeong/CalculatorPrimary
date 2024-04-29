@@ -56,15 +56,25 @@ public class App {
                 result = firstNum / secondNum;
             }
             System.out.println("결과: " + result);
+            if (cnt == 10) { // 연산 결과가 10개를 초과하는 경우
+                for (int i = 0; i < 9; i++) { // 가장 먼저 저장된 결과를 삭제
+                    answers[i] = answers[i+1];
+                }
+                cnt = 9;
+            }
             answers[cnt] = result; // 연산 결과를 배열에 저장
+            cnt++; // 값이 저장될 때마다 다음 배열 칸으로 이동
+
+            for (int i = 0; i < answers.length; i++) {
+                System.out.print(answers[i] + " ");
+            }
+            System.out.println();
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             /* exit을 입력 받으면 반복 종료 */
             String answer = sc.next();
             if (answer.equals("exit")) {
                 break;
-            } else {
-                cnt++; // 값이 저장될 때마다 다음 배열 칸으로 이동
             }
         }
     }
