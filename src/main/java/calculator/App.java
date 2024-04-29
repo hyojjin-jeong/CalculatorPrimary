@@ -62,9 +62,7 @@ public class App {
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String remove = sc.next();
             if (remove.equals("remove")) { // remove 를 입력 시
-                List<Integer> ans = cal.getAnswers(); // 현재 리스트 받아오기
-                ans.remove(0); // 가장 먼저 저장된 연산 결과 삭제
-                cal.setAnswers(ans); // 변경된 리스트 클래스 필드에 넣기
+                cal.removeResult(); // 가장 먼저 저장된 데이터 삭제
             }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");

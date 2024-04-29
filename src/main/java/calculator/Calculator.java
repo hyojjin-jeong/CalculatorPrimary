@@ -37,4 +37,8 @@ public class Calculator {
 
         return result;
     }
+
+    public void removeResult() {
+        this.answers.remove(0); // 0번째 원소 삭제
+    }
 }
