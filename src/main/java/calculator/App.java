@@ -12,12 +12,12 @@ public class App {
         int firstNum = 0;
         int secondNum = 0;
         char operate = ' ';
-        List<Integer> answers = new ArrayList<>();
+        Calculator cal = new Calculator();
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
             while (true) {
                 try {
-                    // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
+                    // Scanner 를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
                     firstNum = sc.nextInt();
                     break;
                 } catch (InputMismatchException e) { // 숫자를 입력 받은 것이 int형 타입이 아닐 때
@@ -39,7 +39,7 @@ public class App {
             System.out.print("두 번째 숫자를 입력하세요: ");
             while (true) {
                 try {
-                    // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
+                    // Scanner 를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
                     secondNum = sc.nextInt();
                     if (operate == '/' && secondNum == 0) { // 나눗셈 연산에서 분모가 0일 때 예외 처리
                         System.out.print("나눗셉 연산에서 분모에 0이 입력될 수 없습니다. 0이 아닌 숫자를 입력해주세요: ");
@@ -52,8 +52,6 @@ public class App {
                 }
 
             }
-
-            Calculator cal = new Calculator();
             int result = cal.calculate(firstNum, secondNum, operate); // 연산
             List<Integer> re = cal.getAnswers(); // 현재 리스트 값 받아오기
             re.add(result); // 현재 연산한 결과값 리스트에 추가하기

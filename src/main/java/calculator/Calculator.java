@@ -16,6 +16,10 @@ public class Calculator {
         this.answers = answers;
     }
 
+    public Calculator(){
+        this.answers.clear();
+    }
+
     public int calculate(int firstNum, int secondNum, char operate) throws BadException{ // 예외 알려주기
         /* 위 요구사항에 맞게 구현 */
         /* return 연산 결과 */
