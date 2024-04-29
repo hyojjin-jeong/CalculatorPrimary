@@ -3,29 +3,13 @@ package main.java.calculator;
 import java.util.List;
 
 public class ArithmeticCalculator extends Calculator {
-    public ArithmeticCalculator(AddOperator addOperator, SubtractOperator subtractOperator, MultiplyOperator multiplyOperator, DivideOperator divideOperator) {
-        super(addOperator, subtractOperator, multiplyOperator, divideOperator);
+
+    public ArithmeticCalculator(AbstractOperator abstractOperator) {
+        super(abstractOperator);
     }
-
-    public int calculate(int firstNum, int secondNum, char oper) throws BadException{ // 예외 알려주기
-        /* 위 요구사항에 맞게 구현 */
-        /* return 연산 결과 */
+    public int operate(int a, int b) {
         int result = 0;
-        if (oper == '+') {
-            result = firstNum + secondNum;
-        } else if (oper == '-') {
-            result = firstNum - secondNum;
-        } else if (oper == '*') {
-            result = firstNum * secondNum;
-        } else if (oper == '/') {
-            if (secondNum == 0) { // 나눗셈 연산에서 분모가 0이라면, 예외를 던지기
-                throw new BadException();
-            }
-            result = firstNum / secondNum;
-        } else { // 지정하지 않은 연산기호가 들어오면, 예외 던지기
-            throw new BadException();
-        }
-
+        result = abstractOperator.operate(a, b);
         return result;
     }
 

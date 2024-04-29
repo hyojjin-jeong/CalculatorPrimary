@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CircleCalculator extends Calculator {
-    public CircleCalculator(AddOperator addOperator, SubtractOperator subtractOperator, MultiplyOperator multiplyOperator, DivideOperator divideOperator) {
-        super(addOperator, subtractOperator, multiplyOperator, divideOperator);
-    }
 
     public double calculateCircleArea(int r) {
         double result = (double)r * (double)r * 3.14;

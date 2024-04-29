@@ -12,11 +12,10 @@ public class App {
         int firstNum = 0;
         int secondNum = 0;
         int r = 0;
-        char operate = ' ';
+        char oper = ' ';
         char two = ' ';
-        ArithmeticCalculator ariCal = new ArithmeticCalculator(new AddOperator(), new SubtractOperator(), new MultiplyOperator(), new DivideOperator());
-        CircleCalculator cirCal = new CircleCalculator(new AddOperator(), new SubtractOperator(), new MultiplyOperator(), new DivideOperator());
-
+        CircleCalculator cirCal = new CircleCalculator();
+        ArithmeticCalculator cal = null;
         while (true) {
             // 사칙연산, 원의 넗이 중 고르는 입력 받기
             System.out.print("사칙연산을 원하면 a를 원의 넓이를 원하면 b를 입력해주세요: ");
@@ -45,8 +44,8 @@ public class App {
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 while (true) {
                     // 사칙연산 기호를 적합한 타입으로 선언한 변수에 저장합니다.
-                    operate = sc.next().charAt(0);
-                    if (operate != '+' && operate != '-' && operate != '*' && operate != '/') { // 입력받은 문자가 사칙연산 기호가 아닐 때
+                    oper = sc.next().charAt(0);
+                    if (oper != '+' && oper != '-' && oper != '*' && oper != '/' && oper != '%') { // 입력받은 문자가 사칙연산 기호가 아닐 때
                         System.out.print("사칙연산 기호가 아닙니다. 다시 입력해주세요: " );
                     } else {
                         break;
@@ -58,7 +57,7 @@ public class App {
                     try {
                         // Scanner 를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
                         secondNum = sc.nextInt();
-                        if (operate == '/' && secondNum == 0) { // 나눗셈 연산에서 분모가 0일 때 예외 처리
+                        if (oper == '/' && secondNum == 0) { // 나눗셈 연산에서 분모가 0일 때 예외 처리
                             System.out.print("나눗셉 연산에서 분모에 0이 입력될 수 없습니다. 0이 아닌 숫자를 입력해주세요: ");
                         } else {
                             break;
@@ -69,21 +68,37 @@ public class App {
                     }
 
                 }
-                int result = ariCal.calculate(firstNum, secondNum, operate); // 연산
-                List<Integer> re = ariCal.getAnswers(); // 현재 리스트 값 받아오기
+                int result = 0;
+                if (oper == '+') {
+                    cal = new ArithmeticCalculator(new AddOperator());
+                    result = cal.operate(firstNum, secondNum);
+                } else if (oper == '-') {
+                    cal = new ArithmeticCalculator(new SubtractOperator());
+                    result = cal.operate(firstNum, secondNum);
+                } else if (oper == '*') {
+                    cal = new ArithmeticCalculator(new MultiplyOperator());
+                    result = cal.operate(firstNum, secondNum);
+                } else if (oper == '/') {
+                    cal = new ArithmeticCalculator(new DivideOperator());
+                    result = cal.operate(firstNum, secondNum);
+                }else if (oper == '%') {
+                    cal = new ArithmeticCalculator(new ModOperator());
+                    result = cal.operate(firstNum, secondNum);
+                }
+                List<Integer> re = cal.getAnswers(); // 현재 리스트 값 받아오기
                 re.add(result); // 현재 연산한 결과값 리스트에 추가하기
-                ariCal.setAnswers(re); // 변경한 리스트 클래스 필드에 넣기
+                cal.setAnswers(re); // 변경한 리스트 클래스 필드에 넣기
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 String remove = sc.next();
                 if (remove.equals("remove")) { // remove 를 입력 시
-                    ariCal.removeResult(); // 가장 먼저 저장된 데이터 삭제
+                    cal.removeResult(); // 가장 먼저 저장된 데이터 삭제
                 }
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String inquiry = sc.next();
                 if (inquiry.equals("inquiry")) { // inquiry 입력 시
-                    ariCal.inquiryResults(); // 결과값 리스트 조회
+                    cal.inquiryResults(); // 결과값 리스트 조회
                 }
             } else if (two == 'b') {
                 // 원의 반지름 입력받기
