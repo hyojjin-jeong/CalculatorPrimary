@@ -65,6 +65,13 @@ public class App {
                 answers.remove(0); // 가장 먼저 저장된 연산 결과 삭제
             }
 
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inquiry = sc.next();
+            if (inquiry.equals("inquiry")) { // inquiry 입력 시
+                answers.forEach(n -> System.out.print(n + " ")); // 저장된 모든 연산 결과 조회
+                System.out.println();
+            }
+
             for (int i = 0; i < answers.size(); i++) {
                 System.out.print(answers.get(i) + " ");
             }
