@@ -68,9 +68,7 @@ public class App {
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inquiry = sc.next();
             if (inquiry.equals("inquiry")) { // inquiry 입력 시
-                List<Integer> ans = cal.getAnswers(); // 현재 리스트 받아오기
-                ans.forEach(n -> System.out.print(n + " ")); // 리스트 출력
-                System.out.println();
+                cal.inquiryResults(); // 결과값 리스트 조회
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");

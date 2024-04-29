@@ -41,4 +41,9 @@ public class Calculator {
     public void removeResult() {
         this.answers.remove(0); // 0번째 원소 삭제
     }
+
+    public void inquiryResults() {
+        answers.forEach(n -> System.out.print(n + " ")); // answers 리스트 각 원소 출력
+        System.out.println();
+    }
 }
