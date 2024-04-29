@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws BadException {
         Scanner sc = new Scanner(System.in);
         // 연산 오류 처리
         int firstNum = 0;
@@ -53,42 +53,25 @@ public class App {
 
             }
 
-            int result = 0;
-            /* 제어문을 활용하여 위 요구사항을 만족할 수 있게 구현합니다.*/
-            if (operate == '+') {
-                result = firstNum + secondNum;
-            } else if (operate == '-') {
-                result = firstNum - secondNum;
-            } else if (operate == '*') {
-                result = firstNum * secondNum;
-            } else if (operate == '/') {
-                result = firstNum / secondNum;
-            }
-            System.out.println("결과: " + result);
-            answers.add(result); // 연산 결과를 배열에 저장
+            Calculator cal = new Calculator();
+            cal.calculate(firstNum, secondNum, operate); // 연산
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String remove = sc.next();
-            if (remove.equals("remove")) { // remove를 입력 시
-                answers.remove(0); // 가장 먼저 저장된 연산 결과 삭제
+            if (remove.equals("remove")) { // remove 를 입력 시
+                cal.answers.remove(0); // 가장 먼저 저장된 연산 결과 삭제
             }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inquiry = sc.next();
             if (inquiry.equals("inquiry")) { // inquiry 입력 시
-                answers.forEach(n -> System.out.print(n + " ")); // 저장된 모든 연산 결과 조회
-                System.out.println();
+                cal.liprint();
             }
-
-            for (int i = 0; i < answers.size(); i++) {
-                System.out.print(answers.get(i) + " ");
-            }
-            System.out.println();
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            /* exit을 입력 받으면 반복 종료 */
-            String answer = sc.next();
-            if (answer.equals("exit")) {
+            /* exit 을 입력 받으면 반복 종료 */
+            String exit = sc.next();
+            if (exit.equals("exit")) {
                 break;
             }
         }

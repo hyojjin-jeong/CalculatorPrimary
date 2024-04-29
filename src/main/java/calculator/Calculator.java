@@ -5,9 +5,14 @@ import java.util.List;
 
 public class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
-    List<Integer> answers = new ArrayList<>();
+    public static List<Integer> answers = new ArrayList<>(); // 연산 결과를 저장하는 리스트 타입 필드
 
-    public int calculate(int firstNum, int secondNum, char operate) throws BadException{ // 예외 알려주기
+    public void liprint() { // 결과값 리스트 출력 함수
+        this.answers.forEach(n -> System.out.print(n + " ")); // 저장된 모든 연산 결과 조회
+        System.out.println();
+    }
+
+    public Calculator calculate(int firstNum, int secondNum, char operate) throws BadException{ // 예외 알려주기
         /* 위 요구사항에 맞게 구현 */
         /* return 연산 결과 */
         int result = 0;
@@ -26,8 +31,8 @@ public class Calculator {
             throw new BadException();
         }
 
-        answers.add(result);
+        this.answers.add(result); // 결과값 리스트에 저장
 
-        return result;
+        return this;
     }
 }
