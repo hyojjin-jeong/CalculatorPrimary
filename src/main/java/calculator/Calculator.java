@@ -6,7 +6,8 @@ import java.util.ListIterator;
 
 public class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
-    private static List<Integer> answers = new ArrayList<>(); // 연산 결과를 저장하는 리스트 타입 필드
+    private static List<Integer> answers = new ArrayList<>(); // 사칙연산 결과를 저장하는 리스트 타입 필드
+    private static List<Double> circles = new ArrayList<>(); // 원의 넓이 결과를 저장하는 리스트 타입 필드
 
     public List<Integer> getAnswers() {
         return answers;
@@ -16,9 +17,19 @@ public class Calculator {
         this.answers = answers;
     }
 
+    public List<Double> getCircles() {
+        return circles;
+    }
+
+    public void setCircles(List<Double> circles) {
+        this.circles =  circles;
+    }
+
     public Calculator(){
         this.answers.clear();
+        this.circles.clear();
     }
+
 
     public int calculate(int firstNum, int secondNum, char operate) throws BadException{ // 예외 알려주기
         /* 위 요구사항에 맞게 구현 */
@@ -48,6 +59,18 @@ public class Calculator {
 
     public void inquiryResults() {
         answers.forEach(n -> System.out.print(n + " ")); // answers 리스트 각 원소 출력
+        System.out.println();
+    }
+
+    // 원의 넓이를 구하는 메소드
+    public double calculateCircleArea(int r) {
+        double result = (double)r * (double)r * 3.14;
+        return result;
+    }
+
+    // 원의 넗이 리스트 조회 메소드
+    public void inquiryCircle() {
+        circles.forEach(n -> System.out.print(n + " "));
         System.out.println();
     }
 }
