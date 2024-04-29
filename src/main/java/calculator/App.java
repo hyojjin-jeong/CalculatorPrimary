@@ -14,7 +14,9 @@ public class App {
         int r = 0;
         char operate = ' ';
         char two = ' ';
-        Calculator cal = new Calculator();
+        ArithmeticCalculator ariCal = new ArithmeticCalculator();
+        CircleCalculator cirCal = new CircleCalculator();
+
         while (true) {
             // 사칙연산, 원의 넗이 중 고르는 입력 받기
             System.out.print("사칙연산을 원하면 a를 원의 넓이를 원하면 b를 입력해주세요: ");
@@ -67,21 +69,21 @@ public class App {
                     }
 
                 }
-                int result = cal.calculate(firstNum, secondNum, operate); // 연산
-                List<Integer> re = cal.getAnswers(); // 현재 리스트 값 받아오기
+                int result = ariCal.calculate(firstNum, secondNum, operate); // 연산
+                List<Integer> re = ariCal.getAnswers(); // 현재 리스트 값 받아오기
                 re.add(result); // 현재 연산한 결과값 리스트에 추가하기
-                cal.setAnswers(re); // 변경한 리스트 클래스 필드에 넣기
+                ariCal.setAnswers(re); // 변경한 리스트 클래스 필드에 넣기
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 String remove = sc.next();
                 if (remove.equals("remove")) { // remove 를 입력 시
-                    cal.removeResult(); // 가장 먼저 저장된 데이터 삭제
+                    ariCal.removeResult(); // 가장 먼저 저장된 데이터 삭제
                 }
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 String inquiry = sc.next();
                 if (inquiry.equals("inquiry")) { // inquiry 입력 시
-                    cal.inquiryResults(); // 결과값 리스트 조회
+                    ariCal.inquiryResults(); // 결과값 리스트 조회
                 }
             } else if (two == 'b') {
                 // 원의 반지름 입력받기
@@ -98,15 +100,15 @@ public class App {
                 }
 
                 // 원의 넓이 구하기
-                double result = cal.calculateCircleArea(r);
+                double result = cirCal.calculateCircleArea(r);
 
                 // 원의 넓이 저장
-                List<Double> re = cal.getCircles();
+                List<Double> re = cirCal.getCircles();
                 re.add(result);
-                cal.setCircles(re);
+                cirCal.setCircles(re);
 
                 // 저장된 원의 넓이 값들 바로 전체 조회
-                cal.inquiryCircle();
+                cirCal.inquiryCircle();
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
