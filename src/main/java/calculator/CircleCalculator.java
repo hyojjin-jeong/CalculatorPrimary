@@ -5,8 +5,8 @@ import java.util.List;
 
 public class CircleCalculator extends Calculator {
 
-    public double calculateCircleArea(int r) {
-        double result = (double)r * (double)r * 3.14;
+    public double calculateCircleArea(double r) {
+        double result = r * r * 3.14;
         return result;
     }
 

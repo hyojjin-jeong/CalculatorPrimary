@@ -9,9 +9,9 @@ public class App {
     public static void main(String[] args) throws BadException {
         Scanner sc = new Scanner(System.in);
         // 연산 오류 처리
-        int firstNum = 0;
-        int secondNum = 0;
-        int r = 0;
+        double firstNum = 0;
+        double secondNum = 0;
+        double r = 0;
         char oper = ' ';
         char two = ' ';
         CircleCalculator cirCal = new CircleCalculator();
@@ -34,10 +34,10 @@ public class App {
                 while (true) {
                     try {
                         // Scanner 를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
-                        firstNum = sc.nextInt();
+                        firstNum = sc.nextDouble();
                         break;
-                    } catch (InputMismatchException e) { // 숫자를 입력 받은 것이 int형 타입이 아닐 때
-                        System.out.print("정수를 입력하세요: ");
+                    } catch (InputMismatchException e) { // 숫자를 입력 받은 것이 double 형 타입이 아닐 때
+                        System.out.print("double 형 타입을 입력하세요: ");
                         sc.nextLine(); // 입력 버퍼 비워주기
                     }
                 }
@@ -56,22 +56,21 @@ public class App {
                 while (true) {
                     try {
                         // Scanner 를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
-                        secondNum = sc.nextInt();
+                        secondNum = sc.nextDouble();
                         if (oper == '/' && secondNum == 0) { // 나눗셈 연산에서 분모가 0일 때 예외 처리
                             System.out.print("나눗셉 연산에서 분모에 0이 입력될 수 없습니다. 0이 아닌 숫자를 입력해주세요: ");
                         } else {
                             break;
                         }
-                    } catch (InputMismatchException e) { // 숫자를 입력 받은 것이 int형 타입이 아닐 때
-                        System.out.print("정수를 입력하세요: ");
+                    } catch (InputMismatchException e) { // 숫자를 입력 받은 것이 double 형 타입이 아닐 때
+                        System.out.print("double 형 타입을 입력하세요: ");
                         sc.nextLine(); // 입력 버퍼 비워주기
                     }
 
                 }
-                int result = 0;
                 cal = new ArithmeticCalculator();
-                result = cal.operate(firstNum, secondNum, oper);
-                List<Integer> re = cal.getAnswers(); // 현재 리스트 값 받아오기
+                Double result = (Double) cal.operate(firstNum, secondNum, oper);
+                List<Double> re = cal.getAnswers(); // 현재 리스트 값 받아오기
                 re.add(result); // 현재 연산한 결과값 리스트에 추가하기
                 cal.setAnswers(re); // 변경한 리스트 클래스 필드에 넣기
 
@@ -92,9 +91,9 @@ public class App {
                 while (true) {
                     try {
                         // Scanner 를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
-                        r = sc.nextInt();
+                        r = sc.nextDouble();
                         break;
-                    } catch (InputMismatchException e) { // 숫자를 입력 받은 것이 int형 타입이 아닐 때
+                    } catch (InputMismatchException e) { // 숫자를 입력 받은 것이 double 형 타입이 아닐 때
                         System.out.print("정수를 입력하세요: ");
                         sc.nextLine(); // 입력 버퍼 비워주기
                     }

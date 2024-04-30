@@ -2,9 +2,9 @@ package main.java.calculator;
 
 import java.util.List;
 
-public class ArithmeticCalculator extends Calculator {
-
-    public int operate(int a, int b, char oper) {
+public class ArithmeticCalculator<T> extends Calculator {
+    // 제네릭 문법 활용
+    public T operate(T a, T b, char oper) {
         // enum 클래스 활용
         // 그 외에 AddOperator, SubtractOperator, DivideOperator,MultiplyOperator,ModOperator 사용 하지 않고, 이 메소드에서 연산자를 구분하여 enum 클래스 매핑을 통해 계산
         OperatorType cal = null;
@@ -19,8 +19,7 @@ public class ArithmeticCalculator extends Calculator {
         } else if (oper == '%') {
             cal = OperatorType.MOD;
         }
-        int result = 0;
-        result = cal.operate(a, b);
+        T result = cal.operate(a, b);
         return result;
     }
 
@@ -29,7 +28,7 @@ public class ArithmeticCalculator extends Calculator {
     }
 
     public void inquiryResults() {
-        List<Integer> ans = getAnswers();
+        List<Double> ans = getAnswers();
         ans.forEach(n -> System.out.print(n + " ")); // answers 리스트 각 원소 출력
         System.out.println();
     }

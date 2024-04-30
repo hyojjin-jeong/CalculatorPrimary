@@ -8,14 +8,14 @@ public abstract class Calculator {
     // 사칙연산 추상화 클래스 필드 생성
     protected final AbstractOperator abstractOperator;
 
-    private static List<Integer> answers = new ArrayList<>(); // 사칙연산 결과를 저장하는 리스트 타입 필드
+    private static List<Double> answers = new ArrayList<>(); // 사칙연산 결과를 저장하는 리스트 타입 필드
     private static List<Double> circles = new ArrayList<>(); // 원의 넓이 결과를 저장하는 리스트 타입 필드
 
-    public List<Integer> getAnswers() {
+    public List<Double> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(List<Integer> answers) {
+    public void setAnswers(List<Double> answers) {
         this.answers = answers;
     }
 
