@@ -85,6 +85,11 @@ public class App {
                 if (inquiry.equals("inquiry")) { // inquiry 입력 시
                     cal.inquiryResults(); // 결과값 리스트 조회
                 }
+
+                // 연산결과들 중 입력받은 두 숫자보다 큰 결과값 조회
+                System.out.println("저장된 연산결과 중 입력받은 두 숫자보다 큰 결과값입니다: ");
+                cal.biggerResults(firstNum, secondNum);
+
             } else if (two == 'b') {
                 // 원의 반지름 입력받기
                 System.out.print("원의 반지름을 입력하세요: ");

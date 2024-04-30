@@ -32,4 +32,13 @@ public class ArithmeticCalculator<T> extends Calculator {
         ans.forEach(n -> System.out.print(n + " ")); // answers 리스트 각 원소 출력
         System.out.println();
     }
+
+    // 입력받은 두 숫자보다 연산결과가 큰 값들을 리스트에 담아 조회하는 메소드
+    public void biggerResults(T a, T b) {
+        List<Double> result = getAnswers().stream()
+                .filter(ans -> (ans > (double) a && ans > (double) b))
+                .toList();
+        result.forEach(n -> System.out.print(n + " "));
+        System.out.println();
+    }
 }
