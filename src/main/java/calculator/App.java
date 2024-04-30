@@ -69,22 +69,8 @@ public class App {
 
                 }
                 int result = 0;
-                if (oper == '+') {
-                    cal = new ArithmeticCalculator(new AddOperator());
-                    result = cal.operate(firstNum, secondNum);
-                } else if (oper == '-') {
-                    cal = new ArithmeticCalculator(new SubtractOperator());
-                    result = cal.operate(firstNum, secondNum);
-                } else if (oper == '*') {
-                    cal = new ArithmeticCalculator(new MultiplyOperator());
-                    result = cal.operate(firstNum, secondNum);
-                } else if (oper == '/') {
-                    cal = new ArithmeticCalculator(new DivideOperator());
-                    result = cal.operate(firstNum, secondNum);
-                }else if (oper == '%') {
-                    cal = new ArithmeticCalculator(new ModOperator());
-                    result = cal.operate(firstNum, secondNum);
-                }
+                cal = new ArithmeticCalculator();
+                result = cal.operate(firstNum, secondNum, oper);
                 List<Integer> re = cal.getAnswers(); // 현재 리스트 값 받아오기
                 re.add(result); // 현재 연산한 결과값 리스트에 추가하기
                 cal.setAnswers(re); // 변경한 리스트 클래스 필드에 넣기

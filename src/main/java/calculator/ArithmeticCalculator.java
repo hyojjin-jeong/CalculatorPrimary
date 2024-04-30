@@ -4,12 +4,23 @@ import java.util.List;
 
 public class ArithmeticCalculator extends Calculator {
 
-    public ArithmeticCalculator(AbstractOperator abstractOperator) {
-        super(abstractOperator);
-    }
-    public int operate(int a, int b) {
+    public int operate(int a, int b, char oper) {
+        // enum 클래스 활용
+        // 그 외에 AddOperator, SubtractOperator, DivideOperator,MultiplyOperator,ModOperator 사용 하지 않고, 이 메소드에서 연산자를 구분하여 enum 클래스 매핑을 통해 계산
+        OperatorType cal = null;
+        if (oper == '+') {
+            cal = OperatorType.ADD;
+        } else if (oper == '-') {
+            cal = OperatorType.SUB;
+        } else if (oper == '*') {
+            cal = OperatorType.MUL;
+        } else if (oper == '/') {
+            cal = OperatorType.DIV;
+        } else if (oper == '%') {
+            cal = OperatorType.MOD;
+        }
         int result = 0;
-        result = abstractOperator.operate(a, b);
+        result = cal.operate(a, b);
         return result;
     }
 
