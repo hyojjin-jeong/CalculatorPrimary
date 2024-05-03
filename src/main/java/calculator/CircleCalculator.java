@@ -1,6 +1,7 @@
 package main.java.calculator;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class CircleCalculator extends Calculator {
@@ -15,5 +16,11 @@ public class CircleCalculator extends Calculator {
         List<Double> cir = getCircles();
         cir.forEach(n -> System.out.print(n + " "));
         System.out.println();
+    }
+
+    public void addCircles(CircleCalculator cirCal, double result) {
+        List<Double> re = cirCal.getCircles();
+        re.add(result);
+        cirCal.setCircles(re);
     }
 }

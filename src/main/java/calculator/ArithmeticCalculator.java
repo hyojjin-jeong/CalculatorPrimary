@@ -41,4 +41,10 @@ public class ArithmeticCalculator<T> extends Calculator {
         result.forEach(n -> System.out.print(n + " "));
         System.out.println();
     }
+
+    public void addResults(ArithmeticCalculator cal, Double result) {
+        List<Double> re = cal.getAnswers(); // 현재 리스트 값 받아오기
+        re.add(result); // 현재 연산한 결과값 리스트에 추가하기
+        cal.setAnswers(re);
+    }
 }

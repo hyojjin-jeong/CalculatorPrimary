@@ -15,7 +15,7 @@ public class App {
         char oper = ' ';
         char two = ' ';
         CircleCalculator cirCal = new CircleCalculator();
-        ArithmeticCalculator cal = null;
+        ArithmeticCalculator cal = new ArithmeticCalculator();
         while (true) {
             // 사칙연산, 원의 넗이 중 고르는 입력 받기
             System.out.print("사칙연산을 원하면 a를 원의 넓이를 원하면 b를 입력해주세요: ");
@@ -68,11 +68,8 @@ public class App {
                     }
 
                 }
-                cal = new ArithmeticCalculator();
                 Double result = (Double) cal.operate(firstNum, secondNum, oper);
-                List<Double> re = cal.getAnswers(); // 현재 리스트 값 받아오기
-                re.add(result); // 현재 연산한 결과값 리스트에 추가하기
-                cal.setAnswers(re); // 변경한 리스트 클래스 필드에 넣기
+                cal.addResults(cal, result); // 변경한 리스트 클래스 필드에 넣기
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 String remove = sc.next();
@@ -108,9 +105,7 @@ public class App {
                 double result = cirCal.calculateCircleArea(r);
 
                 // 원의 넓이 저장
-                List<Double> re = cirCal.getCircles();
-                re.add(result);
-                cirCal.setCircles(re);
+                cirCal.addCircles(cirCal, result);
 
                 // 저장된 원의 넓이 값들 바로 전체 조회
                 cirCal.inquiryCircle();
